@@ -1,0 +1,19 @@
+
+---
+- name: Respaldo de configuracion del router
+  hosts: CSR1kv
+  gather_facts: false
+  connection: local
+
+  tasks:
+    - name: Obtener running-config
+      ios_command:
+        commands:
+          - show running-config
+      register: config_output
+
+    - name: Guardar respaldo en archivo
+      copy:
+        content: "{{ config_output.stdout[0] }}"
+        dest: "backups/backup_CSR1kv.txt"
+      delegate_to: localhost
