@@ -1,0 +1,1 @@
+webservers ansible_user=devasc ansible_password=Cisco123! ansible_host=192.0.2.1 ansible_ssh_common_args='-o StrictHostKeyChecking=no'
